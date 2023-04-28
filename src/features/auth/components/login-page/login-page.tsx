@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Card } from 'antd';
 import { ControlOutlined } from '@ant-design/icons';
+import './login-page.scss';
 
 interface LoginFormValues {
   username: string;
@@ -14,18 +15,10 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
-      <ControlOutlined style={{ fontSize: '72px', marginBottom: '30px' }} />
-      <Card style={{ width: '600px', fontSize: '18px', padding: '40px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>AmourGram admin panel</h2>
+    <div className="login-page">
+      <ControlOutlined className="control-icon" />
+      <Card className="login-form">
+        <h2 className="form-title">AmourGram admin panel</h2>
         <Form
           name="login-form"
           initialValues={{
@@ -67,7 +60,7 @@ const LoginPage: React.FC = () => {
             <Button type="primary" htmlType="submit">
               Log in
             </Button>
-            <Button style={{ marginLeft: '10px' }} type="default">
+            <Button className="signup-button" type="default">
               Sign up
             </Button>
           </Form.Item>
