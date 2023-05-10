@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './app';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
@@ -12,10 +12,9 @@ root.render(
   <React.StrictMode>
     <ToastContainer />
     <Provider store={store}>
-      <BrowserRouter>
-        1
+      <HashRouter>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   </React.StrictMode>,
 );
