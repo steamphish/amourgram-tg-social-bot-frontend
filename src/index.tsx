@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
-import LoginPage from './features/auth/components/login-page/login-page';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -14,7 +13,7 @@ root.render(
     <BrowserRouter>
       <ToastContainer />
       <Provider store={store}>
-        <LoginPage />
+        <App />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
