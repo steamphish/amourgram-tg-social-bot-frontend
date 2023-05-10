@@ -18,3 +18,4 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>,
 );
+console.log('Js works!');
