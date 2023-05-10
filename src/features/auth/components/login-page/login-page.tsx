@@ -1,17 +1,24 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, Card } from 'antd';
+import { Form, Input, Button, Card } from 'antd';
 import { ControlOutlined } from '@ant-design/icons';
 import './login-page.scss';
-
-interface LoginFormValues {
-  username: string;
-  password: string;
-  remember: boolean;
-}
+import { useAuth } from '../../hooks/use-auth';
+import { useNavigate } from 'react-router-dom';
+import { SignInFormValues } from '../../api/models/auth.model';
+import { toast } from 'react-toastify';
 
 const LoginPage: React.FC = () => {
-  const onFinish = (values: LoginFormValues) => {
-    console.log('Received values of form: ', values);
+  const { signIn } = useAuth();
+
+  const navigate = useNavigate();
+
+  const onFinish = async (values: SignInFormValues) => {
+    try {
+      await signIn(values);
+      navigate('/');
+    } catch (e) {
+      toast.error("Something wen't wrong. Please, try again later");
+    }
   };
 
   return (
@@ -27,12 +34,13 @@ const LoginPage: React.FC = () => {
           onFinish={onFinish}
         >
           <Form.Item
-            label="Username"
-            name="username"
+            label="E-mail"
+            name="email"
             rules={[
               {
                 required: true,
-                message: 'Please input your username!',
+                type: 'email',
+                message: 'Please input your e-mail!',
               },
             ]}
           >
@@ -52,16 +60,9 @@ const LoginPage: React.FC = () => {
             <Input.Password />
           </Form.Item>
 
-          <Form.Item name="remember" valuePropName="checked">
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
           <Form.Item>
             <Button type="primary" htmlType="submit">
               Log in
-            </Button>
-            <Button className="signup-button" type="default">
-              Sign up
             </Button>
           </Form.Item>
         </Form>

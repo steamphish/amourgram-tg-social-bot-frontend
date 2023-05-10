@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './app.scss';
-import LoginPage from './features/auth/components/login-page/login-page';
+import { Route, Routes } from 'react-router-dom';
+import { routes } from './core/routes';
+import { PrivateRoute } from './features/auth/components/private-route/private-route.component';
 
-function App() {
-  return <LoginPage />;
-}
+interface AppProps {}
 
+export const App: FC<AppProps> = () => {
+  return (
+    <>
+      <Routes>
+        {Object.values(routes).map((route) => {
+          if (route.private) {
+            return (
+              <Route
+                key={`route-${route.path}`}
+                path={route.path}
+                element={
+                  <PrivateRoute>
+                    <route.Element />
+                  </PrivateRoute>
+                }
+              />
+            );
+          }
+
+          return <Route key={`route-${route.path}`} path={route.path} element={<route.Element />} />;
+        })}
+      </Routes>
+    </>
+  );
+};
 export default App;
