@@ -14,7 +14,7 @@ root.render(
     <BrowserRouter>
       <ToastContainer />
       <Provider store={store}>
-        <LoginPage />
+        <div>Works</div>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
