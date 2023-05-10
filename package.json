@@ -2,7 +2,7 @@
   "name": "a-gram",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://stalkert.github.io/a-gram",
+  "homepage": "https://vdonets-dev.github.io/amourgram-tg-social-bot-frontend",
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@hookform/resolvers": "^2.9.10",
