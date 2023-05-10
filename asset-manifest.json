@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/amourgram-tg-social-bot-frontend/static/css/main.187892da.css",
-    "main.js": "/amourgram-tg-social-bot-frontend/static/js/main.2e491a13.js",
+    "main.css": "/amourgram-tg-social-bot-frontend/static/css/main.c9b2baf4.css",
+    "main.js": "/amourgram-tg-social-bot-frontend/static/js/main.5c4efe4b.js",
     "index.html": "/amourgram-tg-social-bot-frontend/index.html",
-    "main.187892da.css.map": "/amourgram-tg-social-bot-frontend/static/css/main.187892da.css.map",
-    "main.2e491a13.js.map": "/amourgram-tg-social-bot-frontend/static/js/main.2e491a13.js.map"
+    "main.c9b2baf4.css.map": "/amourgram-tg-social-bot-frontend/static/css/main.c9b2baf4.css.map",
+    "main.5c4efe4b.js.map": "/amourgram-tg-social-bot-frontend/static/js/main.5c4efe4b.js.map"
   },
   "entrypoints": [
-    "static/css/main.187892da.css",
-    "static/js/main.2e491a13.js"
+    "static/css/main.c9b2baf4.css",
+    "static/js/main.5c4efe4b.js"
   ]
 }
