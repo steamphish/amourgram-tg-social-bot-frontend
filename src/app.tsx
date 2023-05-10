@@ -12,22 +12,21 @@ export const App: FC<AppProps> = () => {
     <>
       <Routes>
         {Object.values(routes).map((route) => {
+          if (route.private) {
+            return (
+              <Route
+                key={`route-${route.path}`}
+                path={route.path}
+                element={
+                  <PrivateRoute>
+                    <route.Element />
+                  </PrivateRoute>
+                }
+              />
+            );
+          }
+
           return <Route key={`route-${route.path}`} path={route.path} element={<route.Element />} />;
-          // if (route.private) {
-          //   return (
-          //     <Route
-          //       key={`route-${route.path}`}
-          //       path={route.path}
-          //       element={
-          //         <PrivateRoute>
-          //           <route.Element />
-          //         </PrivateRoute>
-          //       }
-          //     />
-          //   );
-          // }
-          //
-          // return <Route key={`route-${route.path}`} path={route.path} element={<route.Element />} />;
         })}
       </Routes>
     </>
