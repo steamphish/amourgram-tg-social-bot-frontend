@@ -1,13 +1,18 @@
 import React, { FC } from 'react';
 import './app.scss';
-import { Route, RouterProvider, Routes } from 'react-router-dom';
-import { router, routes } from './core/routes';
-import { PrivateRoute } from './features/auth/components/private-route/private-route.component';
+import { Route, Routes } from 'react-router-dom';
+import LoginPage from './features/auth/components/login-page/login-page';
+import PageLayout from './common/components/page-layout/page-layout';
 
 interface AppProps {}
 
 export const App: FC<AppProps> = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Routes>
+      <Route path="/" element={<PageLayout />} />
+      <Route path="login" element={<LoginPage />} />
+    </Routes>
+  );
   // return (
   //   <>
   //     <Routes>

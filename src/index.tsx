@@ -12,7 +12,9 @@ root.render(
   <React.StrictMode>
     <ToastContainer />
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
 );

@@ -9,17 +9,6 @@ interface RouteItem {
   private?: boolean;
 }
 
-export const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <PageLayout />,
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  },
-]);
-
 export const routes: Record<string, RouteItem> = {
   dashboard: {
     path: '/',
