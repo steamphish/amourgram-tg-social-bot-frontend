@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
     <div className="login-page">
       <ControlOutlined className="control-icon" />
       <Card className="login-form">
-        <h2 className="form-title">AmourGram admin panel</h2>
+        <h2 className="form-title">AmourGram admin panel!</h2>
         <Form
           name="login-form"
           initialValues={{
