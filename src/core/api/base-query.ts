@@ -1,5 +1,6 @@
 import { axiosBaseQuery } from '../axios-base-query';
 
 export const baseQuery = axiosBaseQuery({
-  baseUrl: 'http://localhost:5005/dev',
+  // @ts-ignore
+  baseUrl: process.env.REACT_APP_API_BASE_URL,
 });

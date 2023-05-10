@@ -7,6 +7,7 @@ import { PrivateRoute } from './features/auth/components/private-route/private-r
 interface AppProps {}
 
 export const App: FC<AppProps> = () => {
+  console.log('App works');
   return (
     <>
       <Routes>
