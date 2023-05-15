@@ -9,7 +9,7 @@ export const authApi = createApi({
     signIn: builder.query<SignInResponse, SignInFormValues>({
       query: (data) => {
         return {
-          url: '/login',
+          url: '/auth/login',
           method: 'post',
           data,
         };

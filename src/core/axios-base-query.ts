@@ -21,7 +21,7 @@ export const axiosBaseQuery =
     try {
       const headers: Record<string, string> = {};
       if (token) {
-        headers['Authorization'] = `Token ${token}`;
+        headers['Authorization'] = `Bearer ${token}`;
       }
 
       const result = await axios({
