@@ -21,7 +21,7 @@ const PageHeader = () => {
       </div>
       <div className="header-logo" />
 
-      <ProfileDropdown username={'AmourAdmin'} onLogout={() => {}} />
+      <ProfileDropdown username={'AmourAdmin'} />
       <Drawer open={showDrawer} onClose={toggleDrawer} placement="left" className="header-mobile">
         <MainMenu toggleDrawer={toggleDrawer} />
       </Drawer>

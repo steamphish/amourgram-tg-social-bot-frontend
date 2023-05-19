@@ -1,14 +1,15 @@
 import { FC } from 'react';
 import { Avatar, Dropdown, MenuProps } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { useAuth } from '../../../features/auth/hooks/use-auth';
 import { Link } from 'react-router-dom';
 
 interface ProfileDropdownProps {
   username: string;
-  onLogout: () => void;
 }
 
-const ProfileDropdown: FC<ProfileDropdownProps> = ({ username, onLogout }) => {
+const ProfileDropdown: FC<ProfileDropdownProps> = ({ username }) => {
+  const { signOut } = useAuth();
   const items: MenuProps['items'] = [
     {
       key: 'settings',
@@ -16,7 +17,11 @@ const ProfileDropdown: FC<ProfileDropdownProps> = ({ username, onLogout }) => {
     },
     {
       key: 'logout',
-      label: <Link to="/">Logout</Link>,
+      label: (
+        <Link to="/login" onClick={signOut}>
+          Logout
+        </Link>
+      ),
     },
   ];
 

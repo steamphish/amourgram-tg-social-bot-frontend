@@ -33,5 +33,9 @@ export const useAuth = () => {
     }
   };
 
-  return { isUserLoggedIn, signIn };
+  const signOut = () => {
+    localStorage.removeItem('token');
+  };
+
+  return { isUserLoggedIn, signIn, signOut };
 };
