@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { UsergroupAddOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -27,6 +28,7 @@ export interface MainMenuProps {
 }
 
 const MainMenu: React.FC<MainMenuProps> = ({ toggleDrawer }) => {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState('mail');
 
   const onClick: MenuProps['onClick'] = (e) => {
@@ -34,6 +36,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ toggleDrawer }) => {
       toggleDrawer();
     }
     setCurrent(e.key);
+    navigate(`/${e.key}`);
   };
 
   return <Menu onClick={onClick} selectedKeys={[current]} mode="inline" items={items} />;

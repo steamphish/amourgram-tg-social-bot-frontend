@@ -16,16 +16,12 @@ export const App: FC<AppProps> = () => {
               <Route
                 key={`route-${route.path}`}
                 path={route.path}
-                element={
-                  <PrivateRoute>
-                    <route.Element />
-                  </PrivateRoute>
-                }
+                element={<PrivateRoute>{route.element}</PrivateRoute>}
               />
             );
           }
 
-          return <Route key={`route-${route.path}`} path={route.path} element={<route.Element />} />;
+          return <Route key={`route-${route.path}`} path={route.path} element={route.element} />;
         })}
       </Routes>
     </>
