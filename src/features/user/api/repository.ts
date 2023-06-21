@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from '../../../core/api/base-query';
-import { List, ListQueryParams, UserBrief } from './models/user.model';
+import { List, ListQueryParams, User, UserBrief } from './models/user.model';
 
 export const transformResponse = (response: any) => {
   return {
@@ -11,8 +11,10 @@ export const transformResponse = (response: any) => {
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: baseQuery,
-  endpoints: (builder) => ({
-    getUsers: builder.query<List<UserBrief>, ListQueryParams>({
+  tagTypes: ['User'],
+  endpoints: (build) => ({
+    getUsers: build.query<List<UserBrief>, ListQueryParams>({
+      keepUnusedDataFor: 1,
       query: ({ page, size, field, direction }) => {
         return {
           url: '/admin/profiles',
@@ -25,8 +27,26 @@ export const userApi = createApi({
           },
         };
       },
+      providesTags: ['User'],
+    }),
+    getUser: build.query<User, number>({
+      query: (id: number) => {
+        return {
+          url: `/admin/profiles/${id}?view=full`,
+          method: 'get',
+        };
+      },
+    }),
+    deleteUser: build.mutation<string, number>({
+      query(id: number) {
+        return {
+          url: `/admin/profiles/${id}`,
+          method: 'DELETE',
+        };
+      },
+      invalidatesTags: ['User'],
     }),
   }),
 });
 
-export const { useGetUsersQuery } = userApi;
+export const { useGetUsersQuery, useGetUserQuery, useDeleteUserMutation } = userApi;

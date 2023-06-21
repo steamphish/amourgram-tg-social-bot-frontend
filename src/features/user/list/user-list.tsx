@@ -5,6 +5,8 @@ import type { FilterValue, SorterResult } from 'antd/es/table/interface';
 import { useGetUsersQuery } from '../api/repository';
 import { Key, SortOrder } from 'antd/es/table/interface';
 import { toast } from 'react-toastify';
+import './user-list.scss';
+import { useNavigate } from 'react-router-dom';
 
 interface DataType {
   id: number;
@@ -62,6 +64,7 @@ const UserList: React.FC = () => {
       total: 0,
     },
   });
+  const navigate = useNavigate();
   const page = tableParams.pagination?.current!;
   const size = tableParams.pagination?.pageSize!;
   const field = tableParams.field as string;
@@ -86,6 +89,7 @@ const UserList: React.FC = () => {
 
   return (
     <Table
+      className="user-list"
       columns={columns}
       rowKey={(record) => record.id}
       dataSource={data?.content || []}
@@ -95,6 +99,13 @@ const UserList: React.FC = () => {
         total: data!?.totalElements || 0,
       }}
       loading={isLoading}
+      onRow={(record) => {
+        return {
+          onClick: () => {
+            navigate(`/users/${record.id}`);
+          },
+        };
+      }}
       onChange={handleTableChange}
     />
   );
