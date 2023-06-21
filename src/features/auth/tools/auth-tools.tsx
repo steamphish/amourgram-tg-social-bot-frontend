@@ -1,5 +1,6 @@
 import jwt_decode from 'jwt-decode';
 import { toast } from 'react-toastify';
+import { redirect } from 'react-router-dom';
 
 export const isLoggedIn = () => {
   const token = localStorage.getItem('token');
@@ -22,5 +23,5 @@ export const isLoggedIn = () => {
 
 export const logout = () => {
   localStorage.removeItem('token');
-  window.location.href = '/login';
+  redirect('/login');
 };
