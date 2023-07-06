@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table } from 'antd';
+import { Avatar, Table } from 'antd';
 import type { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import type { FilterValue, SorterResult } from 'antd/es/table/interface';
 import { useGetUsersQuery } from '../api/repository';
@@ -25,6 +25,12 @@ interface TableParams {
 }
 
 const columns: ColumnsType<DataType> = [
+  {
+    title: 'Avatar',
+    dataIndex: 'photos',
+    sorter: false,
+    render: (photos) => <Avatar src={'data:image/jpeg;base64,' + photos[0]?.photoLob} size={32} />,
+  },
   {
     title: 'Username',
     dataIndex: 'username',

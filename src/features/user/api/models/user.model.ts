@@ -1,5 +1,9 @@
 export type Direction = 'ASC' | 'DESC';
 
+export interface Avatar {
+  photoLob: string;
+}
+
 export interface UserBrief {
   id: number;
   username: string;
@@ -7,6 +11,7 @@ export interface UserBrief {
   sex: string;
   age: number;
   city: string;
+  photos: Avatar[];
 }
 
 export interface ListQueryParams {
