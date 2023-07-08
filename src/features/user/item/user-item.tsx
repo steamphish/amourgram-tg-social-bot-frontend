@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Avatar, Card, Col, Modal, Row} from 'antd';
+import { Avatar, Card, Modal } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDeleteUserMutation, useGetUserQuery } from '../api/repository';
 import './user-item.scss';
@@ -58,37 +58,43 @@ const UserProfile: React.FC = () => {
     return <div>User not found.</div>;
   }
 
-    return (
-        <Card
-            title={<CardHeader title="User info" backBtnLink="/users" isBackBtnVisible={true} buttons={cardActionButtons} />}
-            style={{ width: '100%' }}
-        >
-            <div className="user-info">
-                <div className="user-info__avatar">
-                    <Avatar src={'data:image/jpeg;base64,' + user?.photos[0].photoLob} size={190} />
-                    <span className="flag-icon">{user?.language?.emoji}</span>
-                    <InfoField title="Nickname" text={user?.username} />
-                </div>
-                <div className="user-info__details">
-                    <div className="user-info__row">
-                        <InfoField title="Name" text={user?.name} />
-                        <InfoField title="Age" text={user?.age} />
-                        <InfoField title="Sex" text={user?.sex} />
-                        <InfoField title="City" text={user?.city} />
-                        <InfoField title="Target sex" text={user?.targetSex} />
-                        <InfoField title="Search type" text={user?.communicationForm} />
-                    </div>
-                    <div className="user-info__row fullwidth">
-                        <InfoField title="Purpose of dating" text={user?.purposeOfDating} />
-                        <InfoField title="Description" text={user?.description || "No description"}/>
-                    </div>
-                </div>
-            </div>
-            <Modal title="User deletion" centered open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <p>Are you sure you want to delete {user?.name || 'this user'} ?</p>
-            </Modal>
-        </Card>
-    );
+  return (
+    <Card
+      title={
+        <CardHeader
+          title={`User @${user?.username}`}
+          backBtnLink="/users"
+          isBackBtnVisible={true}
+          buttons={cardActionButtons}
+        />
+      }
+      style={{ width: '100%' }}
+    >
+      <div className="user-info">
+        <div className="user-info__avatar">
+          <Avatar src={'data:image/jpeg;base64,' + user?.photos[0].photoLob} size={190} />
+          <span className="flag-icon">{user?.language?.emoji}</span>
+        </div>
+        <div className="user-info__details">
+          <div className="user-info__row">
+            <InfoField title="Name" text={user?.name} />
+            <InfoField title="Age" text={user?.age} />
+            <InfoField title="Sex" text={user?.sex} />
+            <InfoField title="City" text={user?.city} />
+            <InfoField title="Target sex" text={user?.targetSex} />
+            <InfoField title="Search type" text={user?.communicationForm} />
+          </div>
+          <div className="user-info__row fullwidth">
+            <InfoField title="Purpose of dating" text={user?.purposeOfDating} />
+            <InfoField title="Description" text={user?.description || 'No description'} />
+          </div>
+        </div>
+      </div>
+      <Modal title="User deletion" centered open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <p>Are you sure you want to delete {user?.name || 'this user'} ?</p>
+      </Modal>
+    </Card>
+  );
 };
 
 export default UserProfile;
