@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Card, Modal } from 'antd';
+import {Avatar, Card, Divider, Modal, Tabs} from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDeleteUserMutation, useGetUserQuery } from '../api/repository';
 import './user-item.scss';
 import InfoField from '../../../common/components/ui/info-field/info-field';
 import CardHeader, { UiButton } from '../../../common/components/ui/card-header/card-header';
 import { toast } from 'react-toastify';
+import {AndroidOutlined, AppleOutlined} from "@ant-design/icons";
 
 const UserProfile: React.FC = () => {
   const { userId } = useParams();
@@ -89,6 +90,9 @@ const UserProfile: React.FC = () => {
             <InfoField title="Description" text={user?.description || 'No description'} />
           </div>
         </div>
+      </div>
+      <div>
+        <Divider orientation="right">Event history</Divider>
       </div>
       <Modal title="User deletion" centered open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <p>Are you sure you want to delete {user?.name || 'this user'} ?</p>
