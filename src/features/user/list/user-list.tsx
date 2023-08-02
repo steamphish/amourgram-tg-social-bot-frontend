@@ -7,6 +7,7 @@ import { Key, SortOrder } from 'antd/es/table/interface';
 import { toast } from 'react-toastify';
 import './user-list.scss';
 import { useNavigate } from 'react-router-dom';
+import { Direction } from '../../../common/models';
 
 interface DataType {
   id: number;
@@ -74,7 +75,7 @@ const UserList: React.FC = () => {
   const page = tableParams.pagination?.current!;
   const size = tableParams.pagination?.pageSize!;
   const field = tableParams.field as string;
-  const direction = tableParams.order === 'ascend' ? 'ASC' : 'DESC';
+  const direction = tableParams.order === 'ascend' ? Direction.ASC : Direction.DESC;
   const { data, error, isLoading } = useGetUsersQuery({ page, size, field, direction });
 
   const handleTableChange = (

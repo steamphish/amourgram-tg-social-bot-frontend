@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UsergroupAddOutlined } from '@ant-design/icons';
+import { CalendarOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,10 @@ function getItem(
   } as MenuItem;
 }
 
-const items: MenuItem[] = [getItem('Users', 'users', <UsergroupAddOutlined />)];
+const items: MenuItem[] = [
+  getItem('Users', 'users', <UsergroupAddOutlined />),
+  getItem('Events', 'events', <CalendarOutlined />),
+];
 export interface MainMenuProps {
   toggleDrawer?: () => void;
 }

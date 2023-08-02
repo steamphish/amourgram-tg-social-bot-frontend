@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from '../../../core/api/base-query';
-import { User, UserBrief } from './models/user.model';
 import { List, ListQueryParams } from '../../../common/models';
+import { Event } from './models/event.model';
 
 export const transformResponse = (response: any) => {
   return {
@@ -9,16 +9,16 @@ export const transformResponse = (response: any) => {
   };
 };
 
-export const userApi = createApi({
-  reducerPath: 'userApi',
+export const eventApi = createApi({
+  reducerPath: 'eventApi',
   baseQuery: baseQuery,
-  tagTypes: ['User'],
+  tagTypes: ['Event'],
   endpoints: (build) => ({
-    getUsers: build.query<List<UserBrief>, ListQueryParams>({
+    getEvents: build.query<List<Event>, ListQueryParams>({
       keepUnusedDataFor: 1,
       query: ({ page, size, field, direction }) => {
         return {
-          url: '/admin/profiles',
+          url: '/admin/events',
           method: 'get',
           params: {
             page: page - 1,
@@ -28,26 +28,17 @@ export const userApi = createApi({
           },
         };
       },
-      providesTags: ['User'],
+      providesTags: ['Event'],
     }),
-    getUser: build.query<User, number>({
+    getEvent: build.query<Event, number>({
       query: (id: number) => {
         return {
-          url: `/admin/profiles/${id}?view=full`,
+          url: `/admin/events/${id}`,
           method: 'get',
         };
       },
     }),
-    deleteUser: build.mutation<string, number>({
-      query(id: number) {
-        return {
-          url: `/admin/profiles/${id}`,
-          method: 'DELETE',
-        };
-      },
-      invalidatesTags: ['User'],
-    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetUserQuery, useDeleteUserMutation } = userApi;
+export const { useGetEventsQuery, useGetEventQuery } = eventApi;

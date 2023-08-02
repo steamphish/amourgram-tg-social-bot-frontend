@@ -17,7 +17,7 @@ export interface UiButton {
 interface CardTitleProps {
   title: string;
   isBackBtnVisible: boolean;
-  backBtnLink: string;
+  backBtnLink?: string;
   buttons?: UiButton[];
 }
 
